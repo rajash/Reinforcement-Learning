@@ -92,7 +92,7 @@ def Q_learning(env, num_episodes, discount_factor = 0.4, alpha = 0.9, epsilon = 
 
 Q, stats = Q_learning(env, 1000) 
 
-# plotting.plot_episode_stats(stats)
+plotting.plot_episode_stats(stats)
 
 # test
 state = env.reset()
@@ -100,11 +100,8 @@ env.render()
 rewards_accu = 0
 
 for t in itertools.count(): 
-    action = np.argmax(Q[state]) 
-    
-    # take action and get reward, transit to next state 
+    action = np.argmax(Q[state])  
     state, reward, done, _ = env.step(action) 
-  
     env.render()
     
     # done is True if episode terminated    
