@@ -32,7 +32,7 @@ def createEpsilonGreedyPolicy(Q, epsilon, num_actions):
 
     return policyFunction
 
-def Q_learning(env, num_episodes, discount_factor = 1.0, alpha = 0.6, epsilon = 0.1):
+def Q_learning(env, num_episodes, discount_factor = 0.4, alpha = 0.9, epsilon = 0.5):
     """ 
     Q-Learning algorithm: Off-policy TD control. 
     Finds the optimal greedy policy while improving 
@@ -79,11 +79,11 @@ def Q_learning(env, num_episodes, discount_factor = 1.0, alpha = 0.6, epsilon = 
             best_next_action = np.argmax(Q[next_state])
             TD = reward + discount_factor * Q[next_state][best_next_action] - Q[state][action]
             Q[state][action] += alpha * TD
-            env.render()
+            # env.render()
             
             # done is True if episode terminated    
             if done: 
-                env.render()
+                # env.render()
                 break
 
             state = next_state 
@@ -93,4 +93,22 @@ def Q_learning(env, num_episodes, discount_factor = 1.0, alpha = 0.6, epsilon = 
 Q, stats = Q_learning(env, 1000) 
 
 # plotting.plot_episode_stats(stats)
+
+# test
+state = env.reset()
+env.render()
+rewards_accu = 0
+
+for t in itertools.count(): 
+    action = np.argmax(Q[state]) 
+    
+    # take action and get reward, transit to next state 
+    state, reward, done, _ = env.step(action) 
+  
+    env.render()
+    
+    # done is True if episode terminated    
+    if done: 
+        break
+
 
