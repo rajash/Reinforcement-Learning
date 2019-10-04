@@ -10,10 +10,10 @@ class Brain(object):
         states = Input(shape = (3,))
 
         x = Dense(units = 64, activation= 'sigmoid')(states)
-        x = Dropout(rate = 0.1)(x)
+        # x = Dropout(rate = 0.1)(x)
 
         y = Dense(units = 32, activation= 'sigmoid')(x)
-        y = Dropout(rate = 0.1)(y)
+        # y = Dropout(rate = 0.1)(y)
 
         q_values = Dense(units = number_actions, 
                         activation= 'softmax')(y)
