@@ -11,8 +11,10 @@ from collections import deque
 from experience_replay import ReplayBuffer
 from TD3 import TD3
 
+env_name = 'BipedalWalker-v2'
+# env_name = 'Walker2DBulletEnv-v0'
 # env_name = 'HalfCheetahBulletEnv-v0'
-env_name = 'AntBulletEnv-v0'
+# env_name = 'AntBulletEnv-v0'
 
 seed = 0
 start_timesteps = 1e4
